@@ -46,8 +46,6 @@ Showname s01 episode 6 of 7.avi
 Showname s01 episode 7 of 7.avi
 
 $ ./Renom.py 's{series} episode {episode}' 'Showname {series}x{episode}.avi' *.avi
-Here's the plan:
-
 Original Filename                    New Filename      
 -------------------------------------------------------
 Showname s01 episode 1 of 7.avi -> Showname 01x01.avi
