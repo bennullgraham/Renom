@@ -33,13 +33,51 @@ optional arguments:
 Examples
 --------
 
-1. 
+1.  
 ```bash
-$ ./Renom.py 'Showname s{series} episode {episode}.avi' 'Mightypants season {series} episode {episode}.avi' *.avi
+$ ls -1
+Showname s01 episode 1 of 7.avi
+Showname s01 episode 2 of 7.avi
+Showname s01 episode 3 of 7.avi
+Showname s01 episode 4 of 7.avi
+Showname s01 episode 5 of 7.avi
+Showname s01 episode 6 of 7.avi
+Showname s01 episode 7 of 7.avi
+
+$ ./Renom.py 's{series} episode {episode}' 'Showname {series}x{episode}.avi' *.avi
+Here's the plan:
+
+Original Filename                    New Filename      
+-------------------------------------------------------
+Showname s01 episode 1 of 7.avi -> Showname 01x01.avi
+Showname s01 episode 2 of 7.avi -> Showname 01x02.avi
+Showname s01 episode 3 of 7.avi -> Showname 01x03.avi
+Showname s01 episode 4 of 7.avi -> Showname 01x04.avi
+Showname s01 episode 5 of 7.avi -> Showname 01x05.avi
+Showname s01 episode 6 of 7.avi -> Showname 01x06.avi
+Showname s01 episode 7 of 7.avi -> Showname 01x07.avi
+
+Argue --execute to perform renaming
+
+$ ./Renom.py 's{series} episode {episode}' 'Showname {series}x{episode}.avi' *.avi --execute
+$ ls -1
+Showname 01x01.avi
+Showname 01x02.avi
+Showname 01x03.avi
+Showname 01x04.avi
+Showname 01x05.avi
+Showname 01x06.avi
+Showname 01x07.avi
 ```
 
-2. 
+2.  
 ```bash
-$ ~/rename.py --series=3 'Showname {episode} of 12.avi' 'Terrible Badger {series}x{episode}.avi' *.avi
+# here the series is specified because it isn't present in the filename
+$ ./Renom.py --series=3 'Showname {episode} of 12.avi' 'Terrible Badger {series}x{episode}.avi' *.avi
 ```
 
+Patterns
+--------
+
+ - Internally, the `{episode}` and `{series}` tokens are expanded into named regular expression subgroups: `(?P<episode>[0-9]+)`.
+ - The extract pattern doesn't need to match the entire filename, only enough of it to ensure the correct part is matched.
