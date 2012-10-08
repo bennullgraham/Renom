@@ -34,6 +34,7 @@ Examples
 --------
 
 1.  
+
 ```bash
 $ ls -1
 Showname s01 episode 1 of 7.avi
@@ -71,6 +72,7 @@ Showname 01x07.avi
 ```
 
 2.  
+
 ```bash
 # here the series is specified because it isn't present in the filename
 $ ./Renom.py --series=3 'Showname {episode} of 12.avi' 'Terrible Badger {series}x{episode}.avi' *.avi
