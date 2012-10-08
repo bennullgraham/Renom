@@ -38,7 +38,8 @@ Examples
 $ ./Renom.py 'Showname s{series} episode {episode}.avi' 'Mightypants season {series} episode {episode}.avi' *.avi
 ```
 
-2.
+2. 
 ```bash
 $ ~/rename.py --series=3 'Showname {episode} of 12.avi' 'Terrible Badger {series}x{episode}.avi' *.avi
 ```
+
